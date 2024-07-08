@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tính điểm trung bình và xếp loại</title>
+</head>
+<body>
+
+<h1>Nhập điểm các môn và tính điểm trung bình</h1>
+
+<script>
+    function tinhDiemVaXepLoai() {
+        let diemToan = parseFloat(prompt("Nhập điểm môn Toán:"));
+        let diemVan = parseFloat(prompt("Nhập điểm môn Văn:"));
+        let diemAnh = parseFloat(prompt("Nhập điểm môn Anh:"));
+
+        if (isValidDiem(diemToan) && isValidDiem(diemVan) && isValidDiem(diemAnh)) {
+            let diemTrungBinh = (diemToan + diemVan + diemAnh) / 3;
+            let xepLoai = xepLoaiDiem(diemTrungBinh);
+            alert(`Điểm trung bình của ba môn là: ${diemTrungBinh.toFixed(2)}\nXếp loại: ${xepLoai}`);
+        } else {
+            alert("Điểm nhập vào phải nằm trong khoảng từ 0 đến 10. Vui lòng nhập lại.");
+        }
+    }
+
+    function isValidDiem(diem) {
+        return diem >= 0 && diem <= 10;
+    }
+
+    function xepLoaiDiem(diemTrungBinh) {
+        if (diemTrungBinh >= 8 && diemTrungBinh <= 10) {
+            return "Giỏi";
+        } else if (diemTrungBinh >= 6 && diemTrungBinh < 8) {
+            return "Khá";
+        } else if (diemTrungBinh >= 4 && diemTrungBinh < 6) {
+            return "Trung bình";
+        } else if (diemTrungBinh >= 2 && diemTrungBinh < 4) {
+            return "Yếu";
+        } else {
+            return "Kém";
+        }
+    }
+
+    tinhDiemVaXepLoai();
+</script>
+
+</body>
+</html>
